@@ -1,27 +1,27 @@
-import { FormControl, MenuItem, TextField } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { Control, Controller, FieldErrors } from 'react-hook-form';
-import { addError } from '../utils/Utils';
-import ErrorMsg from './ErrorMsg';
+import { FormControl, MenuItem, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Control, Controller, FieldErrors } from "react-hook-form";
+import { addError } from "../utils/Utils";
+import ErrorMsg from "./ErrorMsg";
 
 type Props = {
   label: string;
   control: Control<typeData>;
-  name: 'qnumber' | 'category' | 'difficulty';
+  name: "qnumber" | "category" | "difficulty";
   errors: FieldErrors<typeData>;
 };
 
 export const SelectCategory = ({ label, control, name, errors }: Props) => {
   const [listCategory, setListCategory] = useState<ListType[]>([]);
   useEffect(() => {
-    fetch('https://opentdb.com/api_category.php')
+    fetch("https://opentdb.com/api_category.php")
       .then((res) => res.json())
       .then((data) => {
         setListCategory(data.trivia_categories);
       });
   }, []);
   return (
-    <FormControl fullWidth sx={{ mb: '1rem' }}>
+    <FormControl fullWidth sx={{ mb: "1rem" }}>
       <Controller
         name={name}
         control={control}
@@ -49,7 +49,7 @@ export const SelectCategory = ({ label, control, name, errors }: Props) => {
 
 export const SelectDifficulty = ({ label, control, name, errors }: Props) => {
   return (
-    <FormControl fullWidth sx={{ mb: '1rem' }}>
+    <FormControl fullWidth sx={{ mb: "1rem" }}>
       <Controller
         name={name}
         control={control}

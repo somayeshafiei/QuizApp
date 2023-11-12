@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { createContext, useState, ReactNode } from 'react';
-const API_ENDPOINT = 'https://opentdb.com/api.php?';
+import axios from "axios";
+import { createContext, useState, ReactNode } from "react";
+const API_ENDPOINT = "https://opentdb.com/api.php?";
 
 interface Props {
   children: ReactNode;
@@ -26,6 +26,7 @@ const AppProvider = ({ children }: Props) => {
       console.log(data);
 
       if (data.length > 0) {
+        console.log(data);
         setQuestions(data);
         setloading(false);
         setWaiting(false);
@@ -70,7 +71,7 @@ const AppProvider = ({ children }: Props) => {
     console.log(data.difficulty);
     const url = `${API_ENDPOINT}amount=${data.qnumber}&category=${
       data.category
-    }&difficulty=${data.difficulty.toLowerCase()}&type=multiple&token=9b5da807b2fca691111a4124177f8d421aab6805546aab1bfed88de3cd9e4c84`;
+    }&difficulty=${data.difficulty.toLowerCase()}&type=multiple&token=c2642c5e9fecc50927ba0eb207d83d8faf3894701f75ab9fe1671e7423b9ed92`;
     fetchQuestions(url);
   };
   return (
